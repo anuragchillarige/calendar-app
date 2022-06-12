@@ -1,11 +1,11 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import icon from '../../assets/icon.svg';
 import './App.css';
+import Weather from './Components/Weather';
+import Time from './Components/Time';
 
 const Hello = () => {
-  return (
-    <div>Hello World!</div>
-  );
+  return <Weather />;
 };
 
 export default function App() {

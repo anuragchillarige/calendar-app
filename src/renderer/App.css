@@ -1,3 +1,36 @@
 *{
-  font-family: sans-serif;
+  font-family: Helvetica, sans-serif;
+}
+
+.weather {
+  background-color: black;
+  display: flex;
+  opacity: 0.88;
+  color: white;
+  border-radius: 1rem;
+  flex-direction: row;
+  
+  width: 20%;
+}
+
+.temp {
+  width: 50%;
+  height: 100%;
+  align-self: center;
+  text-align: center;
+  font-size: 5vh;
+}
+
+.moreInfo {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cityName {
+  position: absolute;
+  top: 0;
+  left: 1%;
 }
