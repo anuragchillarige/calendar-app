@@ -1,10 +1,13 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
 import './App.css';
+import Sign from './Sign';
 
 const Hello = () => {
   return (
-    <div>Hello World!</div>
+    <div>
+      <Sign/>
+    </div>
+    
   );
 };
 
