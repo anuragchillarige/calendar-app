@@ -48,7 +48,7 @@ export default function Weather() {
       <h2 className="temp">{temp}˚F</h2>
 
       <div className="moreInfo">
-        <img src={img} alt="" />
+        <img src={img} alt="" width="53%" />
         <p className="minmax">
           {highTemp}˚F / {lowTemp}˚F
         </p>
