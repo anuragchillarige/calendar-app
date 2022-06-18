@@ -60,7 +60,7 @@ try {
 const forgotPassword = async (email) => {
     try {
         await sendPasswordResetEmail(auth, email);
-        alert("Password reset link sent! Check spam");
+        alert("Password reset link sent! Check spam if you don't see it");
     } catch (err) {
         alert("Invalid Email");
     }
