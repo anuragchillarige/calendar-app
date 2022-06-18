@@ -121,6 +121,7 @@ span{
 
 .sign-in-button{
     text-decoration: none;
+    background: transparent;
 }
 
 .sign-in-button:hover{

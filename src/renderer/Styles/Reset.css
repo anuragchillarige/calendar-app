@@ -120,6 +120,7 @@ span{
 
 .sign-up-button{
     text-decoration: none;
+    background: transparent;
 }
 
 .sign-up-button:hover{
