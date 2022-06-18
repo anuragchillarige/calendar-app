@@ -1,0 +1,46 @@
+*{
+    font-family: Helvetica;
+    font-weight: 200;
+}
+
+.menubar-holder{
+    padding: 2vw;
+}
+
+.menubar{
+    height: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    box-shadow: 0px 10px 100px 20px rgb(194, 191, 191);
+}
+
+.name{
+    background: transparent;
+}
+
+.name span{
+    color:rgb(65, 91, 238);
+}
+
+.logout-button{
+    position: absolute;
+    left: 80%;
+    background: rgb(65, 91, 238);
+    color: white;
+    border: none;
+    width: 150px;
+    font-size: 15px;
+    height: 23px;
+    border-radius: 5px;
+
+}
+
+.page{
+    position: absolute;
+    left: 45%;
+    background: transparent;
+}
