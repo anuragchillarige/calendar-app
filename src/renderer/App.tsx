@@ -1,16 +1,13 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-// import Sign from './Sign';
+
 import Weather from './Components/Weather';
 import Time from './Components/Time';
 
-// const Hello = () => {
-//   return (
-//     <div>
-//       <Sign/>
-//     </div>
-    
-//   );
+import Sign from './Components/SignIn';
+import Register from './Components/Register';
+import Dashboard from './Components/Dashboard';
+import Reset from './Components/Reset';
 
 
 const Hello = () => {
@@ -21,7 +18,10 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Sign/>}/>;
+        <Route path="/dash" element={<Dashboard/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/reset" element={<Reset/>}/> 
       </Routes>
     </Router>
   );

@@ -1,0 +1,143 @@
+*{
+    background: white;
+}
+
+.holder{
+    /* background-image: url("../welcome.png");
+    background-size: cover; */
+
+    /* background: #32ba5b; */
+    width:100vw;
+    height: 100vh;
+}
+
+
+.welcome-panel{
+    justify-content: center;
+    background: transparent;
+    overflow: hidden;
+    display: flex;
+    flex-direction:row;
+    width:100vw;
+    height: 100vh;
+}
+
+.side-panel{
+    width:50vw;
+    background: transparent;
+}
+.welcome{   
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    margin-top: -100px;
+    /* background:rgba(238, 234, 234, 0.399); */
+    background: rgb(247, 245, 245);
+    width:300px;
+    /* position: absolute; */
+    height: 400px;
+    border-radius: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-shadow: 0px 10px 100px 20px rgb(194, 191, 191);
+}
+
+.title{
+    font-family: Helvetica;
+    padding-top: 40px;
+    background: transparent;
+    color: black;
+    align-self: center;
+    height: 80px;
+    font-size: 2em;
+}
+
+.title b{
+    background: transparent;
+    font-weight: 200;
+}
+
+
+input{
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    border-radius: 0.5em;
+    height: 40px;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-bottom:1em;
+    box-shadow: 0px 5px 20px 5px rgb(199, 194, 194);
+}
+
+.login{
+    font-size: 1em;
+    border: none;
+    border-radius: 0.5em;
+    height: 45px;
+    background: rgb(134, 104, 223);
+    color: white;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-bottom:2em;
+    box-shadow: 0px 5px 20px 5px rgb(196, 147, 221);
+}
+
+.noo-account{
+    font-family: sans-serif;
+    font-size: 0.5rem;
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    background: rgb(247, 245, 245);
+    width:300px;
+    padding-top: 20px;
+    padding-bottom:20px;
+    align-items: center;
+    margin-top: 400px;
+    white-space: nowrap;
+    position: absolute;
+    border-radius: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-shadow: 0px 10px 100px 20px rgb(230, 204, 232);
+}
+
+.forgot-password{
+    font-weight: 200;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    margin-left:5.5em;
+}
+
+ h1{
+    color:rgb(84, 83, 83);
+    background: transparent;
+    font-weight: 200;
+}
+
+
+span{
+    background: transparent;
+    padding:0;
+    color: rgb(45, 85, 245);
+    text-decoration: none;
+}
+
+.forgot-password{
+    text-decoration: none;
+}
+.forgot-password:hover{
+    text-decoration: underline;
+}
+
+.sign-up-button{
+    text-decoration: none;
+}
+
+.sign-up-button:hover{
+    text-decoration: underline;
+}
+
+
