@@ -1,6 +1,4 @@
-*{
-    background: white;
-}
+
 
 .holder{
     /* background-image: url("../welcome.png");
@@ -59,7 +57,7 @@
 
 
 input{
-    text-align: center;
+    /* text-align: center; */
     font-size: 15px;
     border: none;
     border-radius: 0.5em;
@@ -81,6 +79,12 @@ input{
     padding-right: 1em;
     margin-bottom:2em;
     box-shadow: 0px 5px 20px 5px rgb(196, 147, 221);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.send:hover {
+    background-color: rgb(124, 94, 213);
+    cursor: pointer;
 }
 
 .no-account{
