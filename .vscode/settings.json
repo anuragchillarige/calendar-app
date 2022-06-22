@@ -1,14 +1,14 @@
 {
   "files.associations": {
-    ".eslintrc": "jsonc",
-    ".prettierrc": "jsonc",
-    ".eslintignore": "ignore",
-    "iosfwd": "cpp"
+    // ".eslintrc": "jsonc",
+    // ".prettierrc": "jsonc",
+    // ".eslintignore": "ignore",
+    // "iosfwd": "cpp"
   },
   
   "eslint.validate": [
-    "javascript",
-    "javascriptreact",
+    // "javascript",
+    // "javascriptreact",
     "html",
     "typescriptreact"
   ],

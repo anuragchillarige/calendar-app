@@ -1,9 +1,31 @@
 import { useState } from 'react';
 
-const IncorrectData = () => {
+const IncorrectData = ({ city }) => {
+  function getLoc() {
+    navigator.geolocation.getCurrentPosition(assignPos);
+  }
+
+  const [inp, setInp] = useState();
+
   return (
-    <div className="weather">
+    <div className="weather noloc">
       <h2 className="noLocation">No Location Found</h2>
+      <form
+        onSubmit={function (event) {
+          event.preventDefault();
+          city(inp);
+        }}
+      >
+        <input
+          className="cityInput"
+          type="text"
+          placeholder="Enter City Name"
+          onChange={(e) => {
+            e.preventDefault();
+            setInp(e.target.value);
+          }}
+        />
+      </form>
     </div>
   );
 };
@@ -14,14 +36,14 @@ export default function Weather() {
   const [lowTemp, setLowTemp] = useState();
   const [img, setImg] = useState();
   const [valid, setValid] = useState(true);
-  const city = 'Cupertino';
+  const [city, setCity] = useState('');
 
   function convertF(celcius) {
     return Math.round(celcius * (9.0 / 5) + 32);
   }
 
   function setWeather(data) {
-    if (data.cod === '404') {
+    if (data.cod === '404' || city === '') {
       setValid(false);
     } else {
       setValid(true);
@@ -39,12 +61,14 @@ export default function Weather() {
     .then((data) => setWeather(data));
 
   if (valid === false) {
-    return <IncorrectData />;
+    return <IncorrectData city={setCity} />;
   }
 
   return (
     <div className="weather">
-      <p className="cityName">Weather in {city}</p>
+      <p className="cityName">
+        Weather in {city.substring(0, 1).toUpperCase() + city.substring(1)}
+      </p>
       <h2 className="temp">{temp}˚F</h2>
       <div className="moreInfo">
         <img src={img} alt="" width="53%" />
