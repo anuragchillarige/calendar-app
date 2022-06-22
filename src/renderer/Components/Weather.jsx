@@ -1,10 +1,6 @@
 import { useState } from 'react';
 
 const IncorrectData = ({ city }) => {
-  function getLoc() {
-    navigator.geolocation.getCurrentPosition(assignPos);
-  }
-
   const [inp, setInp] = useState();
 
   return (
@@ -53,10 +49,13 @@ export default function Weather() {
       setImg(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
     }
   }
-
+  if (city === '') {
+    return <IncorrectData city={setCity} />;
+  }
   const api = fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=91ed74c2909e6d1d05ef3dd5569b5de2`
   )
+    .catch(() => {})
     .then((response) => response.json())
     .then((data) => setWeather(data));
 
@@ -67,7 +66,7 @@ export default function Weather() {
   return (
     <div className="weather">
       <p className="cityName">
-        Weather in {city.substring(0, 1).toUpperCase() + city.substring(1)}
+        Weather in {city.substring(0, 1).toUpperCase() + city.substring(1).toLowerCase()}
       </p>
       <h2 className="temp">{temp}˚F</h2>
       <div className="moreInfo">
