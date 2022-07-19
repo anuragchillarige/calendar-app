@@ -12,8 +12,8 @@ import EventsHolder from './Components/EventsHolder';
 const Main = () => {
   return (
     <div>
-      <Weather />
-      {/* <EventsHolder /> */}
+      {/* <Weather /> */}
+      <EventsHolder />
     </div>
   );
 };

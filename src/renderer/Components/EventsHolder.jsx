@@ -49,6 +49,9 @@ export default function EventsHolder() {
                         let data = event.data();
                         let time = data.start_time;
                         if (parseInt(time.substring(0, time.indexOf(":"))) < 12) {
+                            if (parseInt(time.substring(0, time.indexOf(":"))) === 0) {
+                                time = 12 + "" + time.substring(time.indexOf(":")) + " ";
+                            }
                             time += "am"
                         }
                         else if (parseInt(time.substring(0, time.indexOf(":"))) > 12) {
