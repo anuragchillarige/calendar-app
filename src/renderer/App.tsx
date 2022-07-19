@@ -6,22 +6,26 @@ import Time from './Components/Time';
 
 import Sign from './Components/SignIn';
 import Register from './Components/Register';
-import Dashboard from './Components/Dashboard';
 import Reset from './Components/Reset';
+import EventsHolder from './Components/EventsHolder';
 
-
-const Hello = () => {
-  return( <Weather />);
+const Main = () => {
+  return (
+    <div>
+      <Weather />
+      {/* <EventsHolder /> */}
+    </div>
+  );
 };
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Sign/>}/>;
-        <Route path="/dash" element={<Dashboard/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/reset" element={<Reset/>}/> 
+        <Route path="/" element={<Sign />} />;
+        <Route path="/dash" element={<Main />} />;
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset" element={<Reset />} />
       </Routes>
     </Router>
   );

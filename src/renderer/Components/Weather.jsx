@@ -1,27 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { doc, query, collection, where, getDocs, updateDoc, onSnapshot } from "firebase/firestore";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, db } from "../firebase";
+import '../Styles/Weather.css';
 
-const IncorrectData = ({ city }) => {
-  const [inp, setInp] = useState();
-
+const IncorrectData = () => {
   return (
     <div className="weather noloc">
-      <h2 className="noLocation">No Location Found</h2>
-      <form
-        onSubmit={function (event) {
-          event.preventDefault();
-          city(inp);
-        }}
-      >
-        <input
-          className="cityInput"
-          type="text"
-          placeholder="Enter City Name"
-          onChange={(e) => {
-            e.preventDefault();
-            setInp(e.target.value);
-          }}
-        />
-      </form>
+      <h2 className="noLocation">Weather Unable to be Loaded</h2>
     </div>
   );
 };
@@ -31,15 +17,54 @@ export default function Weather() {
   const [highTemp, setHighTemp] = useState();
   const [lowTemp, setLowTemp] = useState();
   const [img, setImg] = useState();
-  const [valid, setValid] = useState(true);
-  const [city, setCity] = useState('');
+  const [valid, setValid] = useState(false);
+  const [currUser] = useAuthState(auth);
+  const [theLoc, setLoc] = useState();
+
+  useEffect(() => {
+    const func = async () => {
+      await getUserLoc();
+    }
+
+    func()
+
+  }, [currUser])
+
+
+  const getUserLoc = async () => {
+    if (currUser == null) {
+      return;
+    }
+    try {
+      const q = query(
+        collection(db, 'users'),
+        where('uid', '==', currUser?.uid)
+      );
+      const userDoc = await getDocs(q);
+      const userID = userDoc.docs[0].id;
+      const unsub = onSnapshot(doc(db, "users", userID), (doc) => {
+        if (doc.data().location !== 'None') {
+          fetchWeather(doc.data().location);
+
+        }
+
+      })
+
+    } catch (err) {
+      console.log(err);
+      alert('An error had occurred while fetching the users name');
+      return;
+
+    }
+  }
 
   function convertF(celcius) {
     return Math.round(celcius * (9.0 / 5) + 32);
   }
 
   function setWeather(data) {
-    if (data.cod === '404' || city === '') {
+    setLoc(data.name)
+    if (data.cod === '404') {
       setValid(false);
     } else {
       setValid(true);
@@ -49,24 +74,37 @@ export default function Weather() {
       setImg(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
     }
   }
-  if (city === '') {
-    return <IncorrectData city={setCity} />;
+
+  const fetchWeather = (loc) => {
+
+    if (loc.indexOf(",") === -1) {
+      const api = fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${loc}&units=metric&appid=91ed74c2909e6d1d05ef3dd5569b5de2`
+      )
+        .catch(() => { })
+        .then((response) => response.json())
+        .then((data) => setWeather(data));
+    } else {
+      let lat = loc.substring(0, loc.indexOf(",")).trim()
+      let lon = loc.substring(loc.indexOf(",") + 1).trim()
+      const api = fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=91ed74c2909e6d1d05ef3dd5569b5de2`
+      )
+        .catch(() => { console.error("error") })
+        .then((response) => response.json())
+        .then((data) => setWeather(data));
+    }
   }
-  const api = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=91ed74c2909e6d1d05ef3dd5569b5de2`
-  )
-    .catch(() => {})
-    .then((response) => response.json())
-    .then((data) => setWeather(data));
 
   if (valid === false) {
-    return <IncorrectData city={setCity} />;
+    console.log("dsfjklsdljkf")
+    return <IncorrectData />;
   }
 
   return (
     <div className="weather">
       <p className="cityName">
-        Weather in {city.substring(0, 1).toUpperCase() + city.substring(1).toLowerCase()}
+        Weather in {theLoc}
       </p>
       <h2 className="temp">{temp}˚F</h2>
       <div className="moreInfo">
