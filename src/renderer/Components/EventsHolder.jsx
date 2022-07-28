@@ -4,6 +4,7 @@ import { db, auth } from "../firebase";
 import { collection, query, onSnapshot, where, getDocs, orderBy } from "firebase/firestore";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Event from "./Event";
+import '../Styles/Event.css'
 
 export default function EventsHolder() {
 
@@ -60,7 +61,10 @@ export default function EventsHolder() {
                         else {
                             time += " pm"
                         }
-                        eventsArr.push({ name: data.name, details: data.details, day: data.day.toDate(), start_time: time, duration: data.duration, docID: event.id, user: user })
+
+                        let dur = data.duration;
+
+                        eventsArr.push({ name: data.name, details: data.details, day: data.day.toDate(), start_time: time, duration: dur, docID: event.id, user: user })
 
                     })
 
@@ -76,9 +80,13 @@ export default function EventsHolder() {
     }, [user, currUser])
 
     return (
-        <div>
-            {events.map((event, i) => <div>{(i == 0 || events[i].day.getTime() !== events[i - 1].day.getTime()) ? <p className="date" style={{ "textDecoration": "underline" }}>{days[event.day.getDay()] + " " + months[event.day.getMonth()] + " " + event.day.getDate()}</p> : " "}<Event event={event} key={i} /></div>)}
+        <div className="events-component">
+            <h1 className="events-title">Events</h1>
+            <div className="events-holder">
+                {events.map((event, i) => i < 4 && <div className="event-wrapper" key={"wrapper " + i}>{(i == 0 || events[i].day.getTime() !== events[i - 1].day.getTime()) ? <p className="date" key={"Date " + i} >{days[event.day.getDay()] + ", " + months[event.day.getMonth()].toLowerCase() + " " + event.day.getDate()}</p> : " "}<Event event={event} key={i} /></div>)}
+            </div>
         </div>
+
     )
 
 }

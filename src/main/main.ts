@@ -71,14 +71,15 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1280,
-    height: 830,
-    icon: getAssetPath('icon.png'),
+    // width: 1280,
+    // height: 830,
+    fullscreen: true,
+    icon: getAssetPath('logo.incs'),
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
-      // devTools: false,
+      devTools: false,
     },
   });
 

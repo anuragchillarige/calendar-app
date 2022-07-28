@@ -8,11 +8,24 @@ import Sign from './Components/SignIn';
 import Register from './Components/Register';
 import Reset from './Components/Reset';
 import EventsHolder from './Components/EventsHolder';
+import { useEffect, useState } from 'react';
 
 const Main = () => {
+  const mouseHide = setInterval((e) => {
+    const getMouseCoords = (e) => {
+      let body = document.querySelector('body');
+      body.style.cursor = 'auto';
+    };
+
+    let body = document.querySelector('body');
+    body.style.cursor = 'none';
+
+    document.onmousemove = getMouseCoords;
+  }, 1000);
+
   return (
-    <div>
-      {/* <Weather /> */}
+    <div className="component-holder">
+      <Weather />
       <EventsHolder />
     </div>
   );

@@ -97,7 +97,6 @@ export default function Weather() {
   }
 
   if (valid === false) {
-    console.log("dsfjklsdljkf")
     return <IncorrectData />;
   }
 
@@ -106,12 +105,14 @@ export default function Weather() {
       <p className="cityName">
         Weather in {theLoc}
       </p>
-      <h2 className="temp">{temp}˚F</h2>
-      <div className="moreInfo">
-        <img src={img} alt="" width="53%" />
-        <p className="minmax">
-          {highTemp}˚F / {lowTemp}˚F
-        </p>
+      <div className="tempInfo">
+        <h2 className="temp">{temp}˚F</h2>
+        <div className="moreInfo">
+          <img src={img} alt="" width="53%" />
+          <p className="minmax">
+            {highTemp}˚F / {lowTemp}˚F
+          </p>
+        </div>
       </div>
     </div>
   );

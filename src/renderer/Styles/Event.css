@@ -1,0 +1,59 @@
+body {
+  background-image: url('../forest.jpg');
+}
+
+.events-component {
+  margin-top: 20vh;
+}
+
+.events-component h1 {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: inline;
+  margin-bottom: 0px;
+  font-variant: small-caps;
+  font-weight: 500;
+}
+
+.event-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: Helvetica;
+  width: 80vw;
+  margin: 0px;
+  padding: 0px;
+  align-items: center;
+  color: white;
+}
+
+.event {
+  font-size: 14pt;
+  margin-bottom: 50px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 0.5em;
+  margin: 1vh;
+  display: flex;
+  width: 95%;
+  justify-content: space-evenly;
+}
+
+.event p {
+  width: 20%;
+  /* border: 1px solid red; */
+}
+
+.date {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 0.5em;
+  font-variant: small-caps;
+  font-weight: 500;
+  font-size: 18pt;
+  align-self: flex-start;
+  margin-left: 2.5%;
+  margin-bottom: 0px;
+  margin-top: 3vh;
+}
+
+.event-wrapper:nth-child(1) p {
+  margin-top: 1vh;
+}
