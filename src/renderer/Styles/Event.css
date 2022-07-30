@@ -4,6 +4,7 @@ body {
 
 .events-component {
   margin-top: 20vh;
+  width: 80vw;
 }
 
 .events-component h1 {
@@ -44,7 +45,7 @@ body {
 
 .date {
   background-color: rgba(0, 0, 0, 0.75);
-  border-radius: 0.5em;
+  border-radius: 0.25rem;
   font-variant: small-caps;
   font-weight: 500;
   font-size: 18pt;

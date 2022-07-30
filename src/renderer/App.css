@@ -22,3 +22,25 @@ body {
   /* justify-content: center; */
   align-items: center;
 }
+
+.sign-out-button {
+  position: fixed;
+  background-color: rgb(255, 63, 25);
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  width: 100px;
+  height: 25px;
+  transform: translateY(-25px);
+
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.sign-out-button:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+
+.move-down {
+  transform: translateY(55px);
+}
