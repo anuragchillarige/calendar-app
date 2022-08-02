@@ -1,14 +1,26 @@
 import { deleteDoc, doc } from 'firebase/firestore';
+import { useEffect } from 'react';
 import { db } from '../firebase';
 import '../Styles/Event.css'
 
 export default function Event(props) {
     const del = async (e) => {
-        e.preventDefault();
+
         await deleteDoc(
             doc(db, 'users', props.event.user, 'events', props.event.docID)
         );
     };
+
+    useEffect(() => {
+        setInterval(async () => {
+            const today = new Date();
+            if (today > props.event.day) {
+                await del(props.event.docID);
+                console.log("sdljksd")
+            }
+        }, 1000)
+    }, [])
+
 
     return (
         <div className="event">

@@ -2,6 +2,10 @@
   font-family: Helvetica, sans-serif;
 }
 
+body {
+  background-image: url('./Images/forest.jpg');
+}
+
 html,
 body {
   margin: 0px;

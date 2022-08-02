@@ -1,9 +1,4 @@
-import {
-  MemoryRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from 'react-router-dom';
+import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import Weather from './Components/Weather';
@@ -14,11 +9,11 @@ import Register from './Components/Register';
 import Reset from './Components/Reset';
 import EventsHolder from './Components/EventsHolder';
 import { logout } from './firebase';
-import { reload } from 'firebase/auth';
 
 const Main = () => {
-  const nav = useNavigate();
   const startTimer = () => (hideElements = setInterval(func, 3000));
+
+  console.log(images);
 
   const func = () => {
     const getMouseCoords = () => {
@@ -67,7 +62,6 @@ const Main = () => {
         onClick={() => {
           logout();
           location.reload();
-          // nav('/');
         }}
       >
         Sign Out
